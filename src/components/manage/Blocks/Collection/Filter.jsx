@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Portal } from 'react-portal';
 import React, { Component } from 'react';
-import { getIndexValues } from '~/actions';
+import { getIndexValues } from '@eeacms/volto-collection-block/actions';
 import { Menu, Label } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 

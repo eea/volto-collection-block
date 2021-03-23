@@ -1,7 +1,7 @@
-import { GET_INDEX_VALUES } from '~/constants/ActionTypes';
+import { GET_INDEX_VALUES } from '@eeacms/volto-collection-block/constants/ActionTypes';
 
 import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
-import { dataToQueryString } from '~/helpers';
+import { dataToQueryString } from '@eeacms/volto-collection-block/helpers';
 
 export function getIndexValues(name) {
   return {

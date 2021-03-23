@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import TilesListing from './TilesListing';
 import { getBaseUrl } from '@plone/volto/helpers';
 import { Pagination } from '@plone/volto/components';
-import { getContentWithData } from '~/actions';
+import { getContentWithData } from '@eeacms/volto-collection-block/actions';
 import { searchContent } from '@plone/volto/actions';
 import Filter from './Filter';
 

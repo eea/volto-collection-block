@@ -17,6 +17,9 @@
     "url": "git@github.com:eea/volto-collection-block.git"
   },
   "dependencies": {},
+  "devDependencies": {
+    "release-it": "*"
+  },
   "scripts": {
     "release": "release-it",
     "bootstrap": "node bootstrap",

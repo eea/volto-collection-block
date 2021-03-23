@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { FormattedDate } from "react-intl";
-import { Item } from "semantic-ui-react";
-import { Breadcrumb, Placeholder } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import config from "@plone/volto/registry";
+import React, { Component } from 'react';
+import { FormattedDate } from 'react-intl';
+import { Item } from 'semantic-ui-react';
+import { Breadcrumb, Placeholder } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import config from '@plone/volto/registry';
 
 class TilesListing extends Component {
   getPath(url) {
     return url
-      .replace(config.settings.apiPath, "")
-      .replace(config.settings.internalApiPath, "");
+      .replace(config.settings.apiPath, '')
+      .replace(config.settings.internalApiPath, '');
   }
 
   render() {
     // const { items } = this.props;
     const searchItems = this.props.items?.sort(
-      (a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate)
+      (a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate),
     );
-    console.log("lalalalalalala tiles listing");
+
     return searchItems.length ? (
       searchItems.map((item) => (
-        <Item className="search-item" key={item["@id"]}>
+        <Item className="search-item" key={item['@id']}>
           <Item.Content>
             {/* <Item.Header>
          
@@ -28,7 +28,7 @@ class TilesListing extends Component {
 
             <Item.Description>
               <div className="descriptionBody">
-                <Link style={{ color: "#444" }} to={item.url}>
+                <Link style={{ color: '#444' }} to={item.url}>
                   <h4 className="item-title">
                     {item.description || item.title || item.Title}
                   </h4>
@@ -37,12 +37,12 @@ class TilesListing extends Component {
               <div className="searchMetadata">
                 {item.topics && (
                   <div>
-                    <span className="searchLabel black">Topic:</span>{" "}
-                    {item.topics?.join(", ")}
+                    <span className="searchLabel black">Topic:</span>{' '}
+                    {item.topics?.join(', ')}
                   </div>
                 )}
                 <div>
-                  <span className="searchLabel black">Updated:</span>{" "}
+                  <span className="searchLabel black">Updated:</span>{' '}
                   <FormattedDate
                     value={item.ModificationDate}
                     day="2-digit"
@@ -51,17 +51,17 @@ class TilesListing extends Component {
                   />
                 </div>
                 <div>
-                  <span className="searchLabel black">Location:</span>{" "}
-                  {item["@components"] && item["@components"].breadcrumbs && (
-                    <Breadcrumb style={{ display: "inline" }}>
-                      {item["@components"].breadcrumbs.items
+                  <span className="searchLabel black">Location:</span>{' '}
+                  {item['@components'] && item['@components'].breadcrumbs && (
+                    <Breadcrumb style={{ display: 'inline' }}>
+                      {item['@components'].breadcrumbs.items
                         .slice(0, -1)
                         .map((item, index, items) => [
                           index < items.length - 1 ? (
                             <Breadcrumb.Section>
                               <Link
                                 key={item.url}
-                                to={this.getPath(item["@id"])}
+                                to={this.getPath(item['@id'])}
                               >
                                 {item.title}
                               </Link>
@@ -71,7 +71,7 @@ class TilesListing extends Component {
                             <Breadcrumb.Section>
                               <Link
                                 key={item.url}
-                                to={this.getPath(item["@id"])}
+                                to={this.getPath(item['@id'])}
                               >
                                 {item.title}
                               </Link>

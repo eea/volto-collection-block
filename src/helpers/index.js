@@ -1,4 +1,4 @@
-import { compact, concat, isArray, join, map, pickBy, toPairs } from "lodash";
+import { compact, concat, isArray, join, map, pickBy, toPairs } from 'lodash';
 
 // NOTE: this needs to be improvded to recursively convert the query to qs
 // Right now it fails on a query such as:
@@ -13,15 +13,15 @@ export function dataToQueryString(data) {
     data
       ? join(
           map(toPairs(pickBy(data, (item) => !isArray(item))), (item) => {
-            if (item[0] === "SearchableText") {
+            if (item[0] === 'SearchableText') {
               // Adds the wildcard to the SearchableText param
               item[1] = `${item[1]}*`;
             }
-            return join(item, "=");
+            return join(item, '=');
           }),
-          "&"
+          '&',
         )
-      : ""
+      : '',
   );
 
   queryArray = concat(
@@ -31,14 +31,14 @@ export function dataToQueryString(data) {
           map(pickBy(arrayOptions), (item, key) =>
             join(
               item.map((value) => `${key}:list=${value}`),
-              "&"
-            )
+              '&',
+            ),
           ),
-          "&"
+          '&',
         )
-      : ""
+      : '',
   );
 
-  const querystring = join(compact(queryArray), "&");
+  const querystring = join(compact(queryArray), '&');
   return querystring;
 }

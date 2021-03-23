@@ -1,11 +1,9 @@
 import appsSVG from '@plone/volto/icons/apps.svg';
 import contentListingSVG from '@plone/volto/icons/content-listing.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
-import { Button, Segment, Form, Grid } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
+import { Button, Form, Grid } from 'semantic-ui-react';
+
 import React, { Component } from 'react';
-import { SidebarPortal } from '@plone/volto/components';
-import { TextWidget, Icon } from '@plone/volto/components';
 
 class SelectListingType extends Component {
   render() {

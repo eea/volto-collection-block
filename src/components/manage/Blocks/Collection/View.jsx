@@ -3,13 +3,12 @@
  * @module components/theme/View/CollectionView
  */
 
-import React from "react";
-import { Helmet } from "@plone/volto/helpers";
-import { Link } from "react-router-dom";
-import { Container, Image, Item } from "semantic-ui-react";
-import BlockView from "./BlockView";
-import { getBaseUrl } from "@plone/volto/helpers";
-import config from "@plone/volto/registry";
+import React from 'react';
+import { Helmet } from '@plone/volto/helpers';
+import { Container, Item } from 'semantic-ui-react';
+import BlockView from './BlockView';
+import { getBaseUrl } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
 
 /**
  * List view component class.
@@ -19,11 +18,10 @@ import config from "@plone/volto/registry";
  */
 
 const CollectionView = ({ content }) => {
-  let url = content["@id"]
-    .replace(config.settings.internalApiPath, "")
-    .replace(config.settings.apiPath, "");
+  let url = content['@id']
+    .replace(config.settings.internalApiPath, '')
+    .replace(config.settings.apiPath, '');
   url = getBaseUrl(url);
-  console.log("content url", url);
   return (
     <Container id="page-search" className="catalogue-body full-width-catalogue">
       <Helmet title={content.title} />
@@ -32,9 +30,9 @@ const CollectionView = ({ content }) => {
           <Item.Group>
             <h1
               style={{
-                marginTop: "0",
-                marginLeft: "2rem",
-                marginRight: "2rem",
+                marginTop: '0',
+                marginLeft: '2rem',
+                marginRight: '2rem',
               }}
               className="documentFirstHeading"
             >
@@ -43,7 +41,7 @@ const CollectionView = ({ content }) => {
             </h1>
             {content.description && (
               <p
-                style={{ marginLeft: "2rem", marginRight: "2rem" }}
+                style={{ marginLeft: '2rem', marginRight: '2rem' }}
                 className="documentDescription"
               >
                 {content.description}

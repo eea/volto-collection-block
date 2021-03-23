@@ -3,7 +3,7 @@ import { FormattedDate } from "react-intl";
 import { Item } from "semantic-ui-react";
 import { Breadcrumb, Placeholder } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import config from "@plone/volto/config";
+import config from "@plone/volto/registry";
 
 class TilesListing extends Component {
   getPath(url) {

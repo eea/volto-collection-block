@@ -1,5 +1,6 @@
 import CollectionBlockView from "~/components/manage/Blocks/Collection/BlockView";
 import CollectionBlockEdit from "~/components/manage/Blocks/Collection/BlockEdit";
+import CollectionView from "~/components/manage/Blocks/Collection/View";
 import chartIcon from "@plone/volto/icons/world.svg";
 
 const applyConfig = (config) => {
@@ -11,6 +12,8 @@ const applyConfig = (config) => {
     icon: chartIcon,
     group: "custom_addons",
   };
+
+  config.views.contentTypesViews.Collection = CollectionView;
   return config;
 };
 

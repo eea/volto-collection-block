@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
   "license": "MIT",
-  "homepage": "https://github.com/eea/volto-addon-template",
+  "homepage": "https://github.com/eea/volto-collection-block",
   "keywords": [
     "volto-addon",
     "volto",

@@ -7,10 +7,8 @@
 [Volto](https://github.com/plone/volto) add-on
 
 ## Features
- - Generate different site listings with volto.
-###
 
-Demo GIF
+- Generate different site listings with volto.
 
 ## Getting started
 

@@ -8,7 +8,7 @@
 
 ## Features
 
-- Generate different site listings with volto.
+- Generate different site listings with Volto.
 
 Demo GIF
 

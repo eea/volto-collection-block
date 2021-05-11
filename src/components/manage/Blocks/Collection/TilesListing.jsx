@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { FormattedDate } from 'react-intl';
+
 import { Item, Grid } from 'semantic-ui-react';
-import { Breadcrumb, Placeholder } from 'semantic-ui-react';
+import { Placeholder } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
 import { isEqual } from 'lodash';

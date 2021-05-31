@@ -1,47 +1,68 @@
 import React, { Component } from 'react';
-import { FormattedDate } from 'react-intl';
-import { Item } from 'semantic-ui-react';
-import { Breadcrumb, Placeholder } from 'semantic-ui-react';
+
+import { Item, Grid } from 'semantic-ui-react';
+import { Placeholder } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import config from '@plone/volto/registry';
-
+import { isEqual } from 'lodash';
 class TilesListing extends Component {
+  state = { searchItems: [] };
+
   getPath(url) {
     return url
       .replace(config.settings.apiPath, '')
       .replace(config.settings.internalApiPath, '');
   }
 
-  render() {
-    // const { items } = this.props;
-    const searchItems = this.props.items?.sort(
+  getSearchItems() {
+    return this.props.items?.sort(
       (a, b) => new Date(b.ModificationDate) - new Date(a.ModificationDate),
     );
+  }
 
-    return searchItems.length ? (
-      searchItems.map((item) => (
-        <Item className="search-item" key={item['@id']}>
-          <Item.Content>
-            {/* <Item.Header>
-         
-            </Item.Header> */}
+  componentDidMount() {
+    const searchItems = this.getSearchItems();
+    this.setState({ searchItems });
+  }
 
-            <Item.Description>
-              <div className="descriptionBody">
-                <Link style={{ color: '#444' }} to={item.url}>
-                  <h4 className="item-title">
-                    {item.description || item.title || item.Title}
-                  </h4>
-                </Link>
-              </div>
-              <div className="searchMetadata">
-                {item.topics && (
-                  <div>
-                    <span className="searchLabel black">Topic:</span>{' '}
-                    {item.topics?.join(', ')}
+  componentDidUpdate(prevProps, prevState) {
+    if (!isEqual(this.props.items, prevProps.items)) {
+      const searchItems = this.getSearchItems();
+      this.setState({ searchItems });
+    }
+  }
+
+  render() {
+    const { searchItems } = this.state;
+
+    return searchItems.length > 0 ? (
+      <Grid columns={2}>
+        {searchItems.map((item) => (
+          <Grid.Column>
+            <Item key={item['@id']}>
+              <Item.Content>
+                <Item.Header>
+                  <Link style={{ color: '#666' }} to={item.url}>
+                    <h2 className="item-title">{item.title || item.Title}</h2>
+                  </Link>
+                </Item.Header>
+
+                <Item.Description>
+                  <div className="descriptionBody">
+                    <Link style={{ color: '#444' }} to={item.url}>
+                      <p className="item-description">
+                        {item.description || item.title || item.Title}
+                      </p>
+                    </Link>
                   </div>
-                )}
-                <div>
+                  <div className="searchMetadata">
+                    {item.topics && (
+                      <div>
+                        <span className="searchLabel black">Topic:</span>{' '}
+                        {item.topics?.join(', ')}meri zinndagi kaa
+                      </div>
+                    )}
+                    {/* <div>
                   <span className="searchLabel black">Updated:</span>{' '}
                   <FormattedDate
                     value={item.ModificationDate}
@@ -52,7 +73,7 @@ class TilesListing extends Component {
                 </div>
                 <div>
                   <span className="searchLabel black">Location:</span>{' '}
-                  {item['@components'] && item['@components'].breadcrumbs && (
+                  {item['@components'] && item['@components']?.breadcrumbs && (
                     <Breadcrumb style={{ display: 'inline' }}>
                       {item['@components'].breadcrumbs.items
                         .slice(0, -1)
@@ -80,12 +101,14 @@ class TilesListing extends Component {
                         ])}
                     </Breadcrumb>
                   )}
-                </div>
-              </div>
-            </Item.Description>
-          </Item.Content>
-        </Item>
-      ))
+                </div> */}
+                  </div>
+                </Item.Description>
+              </Item.Content>
+            </Item>
+          </Grid.Column>
+        ))}
+      </Grid>
     ) : (
       <div>
         <p>No results.</p>
